@@ -68,9 +68,7 @@ public class Algorithms {
 
    public static <T> void reverse(T[] array) {
       for (int i = 0; i < array.length / 2; i++) {
-         T temp = array[i];
-         array[i] = array[array.length - 1 - i];
-         array[array.length - 1 - i] = temp;
+         swap(array, i, array.length - 1 - i);
       } 
   }
 
@@ -80,9 +78,7 @@ public class Algorithms {
 
    public static <T> void reverse(T[] array, int fromIndex, int toIndex) {
       for (int i = fromIndex; i < (fromIndex + toIndex) / 2; i++) {
-         T temp = array[i];
-         array[i] = array[toIndex - 1 - (i - fromIndex)];
-         array[toIndex - 1 - (i - fromIndex)] = temp;
+         swap(array, i, (toIndex - 1 - (i - fromIndex)));
      }
    }
 
