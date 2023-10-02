@@ -41,8 +41,12 @@ Opin miten lisäyslajittelu toimii.
 Lisäyslajittelun aikakompleksisuus on O(n^2).
 Reversen aikakompleksisuus on O(n).
 Jos taulukko on jo valmiiksi nousevassa järjestyksessä, ja se halutaan kääntää laskevaksi, se kannattaa kääntää lajittelun sijaan, sillä reversen aikakompleksisuus on pienempi.
-## 02-TASK
 
+## 02-TASK
+![Excelkuva](image.png)
+Fill näyttäisi olevan O(N^2), kun taas search pienien lukujen outouksia lukuunottamatta O(N).
+Hitaassa tilanteessa joudutaan lajittelemaan, ja lajittelun aikakompleksisuus on luokkaa O(N^2), kun taas kääntäminen O(N). Kannattaa siis aina käyttää reverseä jos taulukko on jo lajiteltuna.
+Toteutettuja hakualgoritmeja sanotaan lineaarisiksi, sillä niiden toteuttamisaika kasvaa suoraan verrannollisena alkioiden määrään. Näiden aikakompleksisuus on siis O(n).
 ## 03-TASK
 
 ## 04-TASK
