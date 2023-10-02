@@ -37,7 +37,10 @@ Alaluvut jokaisen tehtävän raportille löydät alta.
 
 
 ## 01-TASK
-
+Opin miten lisäyslajittelu toimii.
+Lisäyslajittelun aikakompleksisuus on O(n^2).
+Reversen aikakompleksisuus on O(n).
+Jos taulukko on jo valmiiksi nousevassa järjestyksessä, ja se halutaan kääntää laskevaksi, se kannattaa kääntää lajittelun sijaan, sillä reversen aikakompleksisuus on pienempi.
 ## 02-TASK
 
 ## 03-TASK

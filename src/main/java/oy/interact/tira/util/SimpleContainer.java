@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.function.Predicate;
 
 import oy.interact.tira.NotYetImplementedException;
+import oy.interact.tira.model.Coder;
 import oy.interact.tira.student.Algorithms;
 
 public class SimpleContainer<E extends Comparable<E>> implements TIRAContainer<E> {
@@ -183,13 +184,13 @@ public class SimpleContainer<E extends Comparable<E>> implements TIRAContainer<E
 
 	@Override
 	public void reverse() {
-		// TODO: Student: finish this as part of task 02.
+		Algorithms.reverse(array);
 	}
 
 	// TEACHERS: TODO: Remove the call to Algorithms sort method.
 	@Override
 	public void sort() {
-		// TODO: Student: finish this as part of task 02.
+		Algorithms.insertionSort(array, 0, count);
 	}
 
 	// TEACHERS: TODO: Remove the call to Algorithms sort method.

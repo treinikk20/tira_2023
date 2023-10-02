@@ -13,7 +13,19 @@ public class Algorithms {
    ///////////////////////////////////////////
 
    public static <T extends Comparable<T>> void insertionSort(T[] array) {
-      // TODO: Student, implement this.
+      int n = array.length;
+    
+      for (int i = 1; i < n; i++) {
+          T key = array[i];
+          int j = i - 1;
+  
+          while (j >= 0 && array[j].compareTo(key) > 0) {
+              array[j + 1] = array[j];
+              j--;
+          }
+  
+          array[j + 1] = key;
+      }
    }
 
    ///////////////////////////////////////////
@@ -21,7 +33,17 @@ public class Algorithms {
    ///////////////////////////////////////////
 
    public static <T extends Comparable<T>> void insertionSort(T[] array, int fromIndex, int toIndex) {
-      // TODO: Student, implement this.
+      for (int i = fromIndex + 1; i < toIndex; i++) {
+         T key = array[i];
+         int j = i - 1;
+ 
+         while (j >= fromIndex && array[j].compareTo(key) > 0) {
+             array[j + 1] = array[j];
+             j--;
+         }
+ 
+         array[j + 1] = key;
+     }
    }
 
    //////////////////////////////////////////////////////////
@@ -45,19 +67,34 @@ public class Algorithms {
    ///////////////////////////////////////////
 
    public static <T> void reverse(T[] array) {
-      // TODO: Student, implement this.
-   }
+      for (int i = 0; i < array.length / 2; i++) {
+         T temp = array[i];
+         array[i] = array[array.length - 1 - i];
+         array[array.length - 1 - i] = temp;
+      } 
+  }
 
    ///////////////////////////////////////////
    // Reversing a slice of an array
    ///////////////////////////////////////////
 
    public static <T> void reverse(T[] array, int fromIndex, int toIndex) {
-      // TODO: Student, implement this.
+      for (int i = fromIndex; i < (fromIndex + toIndex) / 2; i++) {
+         T temp = array[i];
+         array[i] = array[toIndex - 1 - (i - fromIndex)];
+         array[toIndex - 1 - (i - fromIndex)] = temp;
+     }
    }
 
+   ///////////////////////////////////////////
+   // Swap algorithm
+   ///////////////////////////////////////////
 
-
+   public static <T> void swap(T[] array, int x, int y) {
+      T temp = array[x];
+      array[x] = array[y];
+      array[y] = temp;
+  }
 
    ///////////////////////////////////////////
    // Binary search bw indices
