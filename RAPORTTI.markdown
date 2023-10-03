@@ -51,6 +51,7 @@ Toteutettuja hakualgoritmeja sanotaan lineaarisiksi, sillä niiden toteuttamisai
 Opin miten puolitushaku toimii.
 ![Excelkuva, vasemmalla ascending ja oikealla descending](image-1.png)
 Fill O(n*log(N)) ja sort O(N^2) kummassakin tapauksessa, kun taas puolitushaku on aikaluokkaa O(log(N)).
+Puolitushausta on toteutettu myös rekursiivinen versio, ilman komparaattoria ja komparaattorin kanssa.
 ## 04-TASK
 
 ## 05-TASK
