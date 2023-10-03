@@ -118,17 +118,104 @@ public class Algorithms {
    // Binary search bw indices
    ///////////////////////////////////////////
 
+   //Iteratiivinen versio
+
    public static <T extends Comparable<T>> int binarySearch(T aValue, T[] fromArray, int fromIndex, int toIndex) {
-      return -1;
+      while (fromIndex <= toIndex) {
+         int mid = fromIndex + (toIndex - fromIndex) / 2;
+
+         if (mid < 0 || mid >= fromArray.length) {
+            return -1;
+        }
+ 
+         int comparison = aValue.compareTo(fromArray[mid]);
+ 
+         if (comparison == 0) {
+            return mid;
+         } else if (comparison < 0) {
+            toIndex = mid - 1;
+         } else {
+            fromIndex = mid + 1; 
+         }
+     }
+     return -1;
    }
+
+   //Rekursiivinen versio
+
+   /*public static <T extends Comparable<T>> int binarySearch(T aValue, T[] fromArray, int fromIndex, int toIndex) {
+      if (fromIndex <= toIndex) {
+         int mid = fromIndex + (toIndex - fromIndex) / 2;
+
+         if (mid < 0 || mid >= fromArray.length) {
+            return -1;
+         }
+  
+         int comparison = aValue.compareTo(fromArray[mid]);
+  
+         if (comparison == 0) {
+            return mid;
+         } else if (comparison < 0) {
+            return binarySearch(aValue, fromArray, fromIndex, mid - 1);
+         } else {
+            return binarySearch(aValue, fromArray, mid + 1, toIndex);
+         }
+      }
+  
+      return -1;
+  }*/
 
    ///////////////////////////////////////////
    // Binary search using a Comparator
    ///////////////////////////////////////////
 
+   //Iteratiivinen versio
+
    public static <T> int binarySearch(T aValue, T[] fromArray, int fromIndex, int toIndex, Comparator<T> comparator) {
-      return -1;
+      while (fromIndex <= toIndex) {
+         int mid = fromIndex + (toIndex - fromIndex) / 2;
+ 
+         if (mid < 0 || mid >= fromArray.length) {
+            return -1;
+         }
+ 
+         int comparison = comparator.compare(aValue, fromArray[mid]);
+ 
+         if (comparison == 0) {
+            return mid;
+         } else if (comparison < 0) {
+            toIndex = mid - 1;
+         } else {
+            fromIndex = mid + 1;
+         }
+      }
+ 
+     return -1;
    }
+
+   //Rekursiivinen versio
+
+   /*public static <T> int binarySearch(T aValue, T[] fromArray, int fromIndex, int toIndex, Comparator<T> comparator) {
+      if (fromIndex <= toIndex) {
+         int mid = fromIndex + (toIndex - fromIndex) / 2;
+
+         if (mid < 0 || mid >= fromArray.length) {
+            return -1;
+         }
+  
+         int comparison = comparator.compare(aValue, fromArray[mid]);
+  
+         if (comparison == 0) {
+            return mid;
+         } else if (comparison < 0) {
+            return binarySearch(aValue, fromArray, fromIndex, mid - 1, Comparator<T> comparator);
+         } else {
+            return binarySearch(aValue, fromArray, mid + 1, toIndex, Comparator<T> comparator);
+         }
+      }
+  
+      return -1;
+  }*/
 
    public static <E extends Comparable<E>> void fastSort(E [] array) {
       // TODO: Student, implement this.

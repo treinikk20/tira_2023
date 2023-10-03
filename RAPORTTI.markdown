@@ -44,11 +44,13 @@ Jos taulukko on jo valmiiksi nousevassa järjestyksessä, ja se halutaan käänt
 
 ## 02-TASK
 ![Excelkuva](image.png)
-Fill näyttäisi olevan O(N^2), kun taas search pienien lukujen outouksia lukuunottamatta O(N).
+Fill näyttäisi olevan O(N*log(N)), kun taas search pienien lukujen outouksia lukuunottamatta O(N).
 Hitaassa tilanteessa joudutaan lajittelemaan, ja lajittelun aikakompleksisuus on luokkaa O(N^2), kun taas kääntäminen O(N). Kannattaa siis aina käyttää reverseä jos taulukko on jo lajiteltuna.
 Toteutettuja hakualgoritmeja sanotaan lineaarisiksi, sillä niiden toteuttamisaika kasvaa suoraan verrannollisena alkioiden määrään. Näiden aikakompleksisuus on siis O(n).
 ## 03-TASK
-
+Opin miten puolitushaku toimii.
+![Excelkuva, vasemmalla ascending ja oikealla descending](image-1.png)
+Fill O(n*log(N)) ja sort O(N^2) kummassakin tapauksessa, kun taas puolitushaku on aikaluokkaa O(log(N)).
 ## 04-TASK
 
 ## 05-TASK
