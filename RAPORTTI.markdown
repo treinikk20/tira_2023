@@ -41,7 +41,6 @@ Opin miten lisäyslajittelu toimii.
 Lisäyslajittelun aikakompleksisuus on O(n^2).
 Reversen aikakompleksisuus on O(n).
 Jos taulukko on jo valmiiksi nousevassa järjestyksessä, ja se halutaan kääntää laskevaksi, se kannattaa kääntää lajittelun sijaan, sillä reversen aikakompleksisuus on pienempi.
-
 ## 02-TASK
 ![Excelkuva](image.png)
 Fill näyttäisi olevan O(N*log(N)), kun taas search pienien lukujen outouksia lukuunottamatta O(N).
@@ -53,7 +52,9 @@ Opin miten puolitushaku toimii.
 Fill O(n*log(N)) ja sort O(N^2) kummassakin tapauksessa, kun taas puolitushaku on aikaluokkaa O(log(N)).
 Puolitushausta on toteutettu myös rekursiivinen versio, ilman komparaattoria ja komparaattorin kanssa.
 ## 04-TASK
-
+ToString aiheutti vaikeuksia, vaikka stack toimikin. Muuten tehtävä oli helppo.
+Toteutukset vastaavat aikakompleksisuusvaatimuksia, sillä ainoat for-loopit ovat stackin reallokoinnissa ja ParenthesisCheckerissä.
+Jos lainausmerkkejä on tekstissä vain esimerkiksi yksi keskellä merkkijonoa, ei algoritmi periaatteessa toimi, sillä se ei tarkista milloin lainausmerkit suljetaan, jolloin lopputeksti skippaantuisi. Olisin muuten implementoinut tämän stackkia käyttäen, mutta tehtävä ei sitä vaatinut, eikä ParenthesesExceptionissa ollut exceptionia tätä varten.
 ## 05-TASK
 
 ## 06-TASK
