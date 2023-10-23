@@ -56,7 +56,10 @@ ToString aiheutti vaikeuksia, vaikka stack toimikin. Muuten tehtävä oli helppo
 Toteutukset vastaavat aikakompleksisuusvaatimuksia, sillä ainoat for-loopit ovat stackin reallokoinnissa ja ParenthesisCheckerissä.
 Jos lainausmerkkejä on tekstissä vain esimerkiksi yksi keskellä merkkijonoa, ei algoritmi periaatteessa toimi, sillä se ei tarkista milloin lainausmerkit suljetaan, jolloin lopputeksti skippaantuisi. Olisin muuten implementoinut tämän stackkia käyttäen, mutta tehtävä ei sitä vaatinut, eikä ParenthesesExceptionissa ollut exceptionia tätä varten.
 ## 05-TASK
-
+Tein jonotietorakenteen taulukkoa käyttäen. Opin miten jono toimii. Tehtävä oli helppo.
+Toteutus noudattaa aikakompleksisuutta.
+Linkitetyn listan muistikompleksisuus voi olla pienempi, jos taulukossa on paljon tyhjiä paikkoja. Myöskin linkitettyyn listaan alkioiden aikakompleksisuus on aina O(1), sillä reallokointia ei tarvita.
+Taulukolla ei paljoa etuja ole jonorakennetta toteuttaessa, mutta esimerkiksi taulukon koon pysyminen vakiona (jos tiedetään tarkalleen alkioille tarvittavan tilan määrä), voi olla hyvä asia.
 ## 06-TASK
 
 ## 07-TASK

@@ -15,7 +15,7 @@ public class StackImplementation<E> implements StackInterface<E> {
     }
 
     public StackImplementation(int stackSize) throws IllegalArgumentException {
-        if (stackSize < 1) {
+        if (stackSize < 2) {
             throw new IllegalArgumentException("Stack too small!");
         }
         itemArray = new Object[stackSize];
@@ -67,6 +67,8 @@ public class StackImplementation<E> implements StackInterface<E> {
     @Override
     public void clear() {
         size = 0;
+        capacity = 0;
+        itemArray = new Object[DEFAULT_STACK_SIZE];
     }
     
     private void reallocateArray(int capacity) {
