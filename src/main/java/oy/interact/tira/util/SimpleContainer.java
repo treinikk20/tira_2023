@@ -209,13 +209,13 @@ public class SimpleContainer<E extends Comparable<E>> implements TIRAContainer<E
 
 	@Override
 	public void sort() {
-		Algorithms.insertionSort(array, 0, size());
+		Algorithms.fastSort(array);
 		sorted = true;
 	}
 
 	@Override
 	public void sort(Comparator<E> usingComparator) {
-		Algorithms.insertionSort(array, 0, size(), usingComparator);
+		Algorithms.fastSort(array, 0, size() - 1, usingComparator);
 		sorted = true;
 	}
 

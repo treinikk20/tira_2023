@@ -218,15 +218,216 @@ public class Algorithms {
   }*/
 
    public static <E extends Comparable<E>> void fastSort(E [] array) {
-      // TODO: Student, implement this.
+      //array = mergeSortComparable(array);
+      quickSortComparable(array, 0, array.length - 1);
+   }
+
+   private static <E extends Comparable<E>> void quickSortComparable(E [] array, int fromIndex, int toIndex) {
+      if (fromIndex < toIndex) {
+         int i = fromIndex;
+         int j = toIndex;
+         E pivot = array[(i + j) / 2];
+         
+         do {
+            while (array[i].compareTo(pivot) < 0) i++;
+            while (pivot.compareTo(array[j]) < 0) j--;
+         
+            if (i <= j) {
+               swap(array, i, j);
+               i++;
+               j--;
+            }
+         
+         } while (i <= j);
+
+         quickSortComparable(array, fromIndex, j);
+         quickSortComparable(array, i, toIndex);
+      } 
    }
 
    public static <E> void fastSort(E [] array, Comparator<E> comparator) {
-      // TODO: Student, implement this.
+      //array = mergeSortComparator(array, comparator);
+      quickSortComparator(array, 0, array.length - 1, comparator);
    }
 
    public static <E> void fastSort(E [] array, int fromIndex, int toIndex, Comparator<E> comparator) {
-      // TODO: Student, implement this.
+      //array = mergeSortComparator(array, fromIndex, toIndex, comparator);
+      quickSortComparator(array, fromIndex, toIndex, comparator);
    }
+
+   private static <E> void quickSortComparator(E [] array, int fromIndex, int toIndex, Comparator<E> comparator) {
+      if (fromIndex < toIndex) {
+         int i = fromIndex;
+         int j = toIndex;
+         E pivot = array[(i + j) / 2];
+
+         do {
+            while (comparator.compare(array[i], pivot) < 0) i++;
+            while (comparator.compare(pivot, array[j]) < 0) j--;
+
+            if (i <= j) {
+               swap(array, i, j);
+               i++;
+               j--;
+            }
+
+         } while (i <= j);
+
+         quickSortComparator(array, fromIndex, j, comparator);
+         quickSortComparator(array, i, toIndex, comparator);
+      } 
+   }   
+
+   ///////////////////////////////////////////
+   // Mergesort using comparable (not working)
+   ///////////////////////////////////////////
+/*
+   @SuppressWarnings("unchecked")
+   private static <E extends Comparable<E>> E[] mergeSortComparable(E [] array) {
+      int length = array.length;
+      System.out.println(length);
+      int mid = length / 2;
+      E [] leftArray = (E[]) new Object[mid];
+      E [] rightArray = (E[]) new Object[mid];
+      if (length == 1) {
+         return array;
+      } else {
+         for (int i = 0; i < mid; i++) {
+            leftArray[i] = array[i];
+         }
+         for (int j = mid; j < length; j++) {
+            int i = 0;
+            rightArray[i++] = array[j];
+         }
+
+      leftArray = mergeSortComparable(leftArray);
+      rightArray = mergeSortComparable(rightArray);
+      mergeComparable(leftArray, rightArray, array);
+      }
+
+      return array;
+   }
+
+   private static <E extends Comparable<E>> void mergeComparable(E [] leftArray, E [] rightArray, E [] array) {
+      int leftIndex = 0;
+      int rightIndex = 0;
+      int arrayIndex = 0;
+
+      while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
+         if (leftArray[leftIndex].compareTo(rightArray[rightIndex]) < 0) {
+            array[arrayIndex] = leftArray[leftIndex];
+            leftIndex++;
+         } else {
+            array[arrayIndex] = rightArray[rightIndex];
+            rightIndex++;
+         }
+         arrayIndex++;
+      }
+
+      while (leftIndex < leftArray.length) {
+         array[arrayIndex] = leftArray[leftIndex];
+         arrayIndex++;
+         leftIndex++;
+      }
+
+      while (rightIndex < rightArray.length) {
+         array[arrayIndex] = rightArray[rightIndex];
+         arrayIndex++;
+         rightIndex++;
+      }
+   }
+*/
+
+   ///////////////////////////////////////////
+   // Mergesort using comparator (not working)
+   ///////////////////////////////////////////
+
+/*
+   @SuppressWarnings("unchecked")
+   private static <E> E [] mergeSortComparator(E[] array, Comparator<E> comparator) {
+      int length = array.length;
+      int mid = length / 2;
+      E [] leftArray = (E[]) new Object[mid];
+      E [] rightArray = (E[]) new Object[mid];
+      if (length == 1) {
+         return array;
+      } else {
+         for (int i = 0; i < mid; i++) {
+            leftArray[i] = array[i];
+         }
+         for (int j = mid; j < length; j++) {
+            int i = 0;
+            rightArray[i++] = array[j];
+         }
+
+      leftArray = mergeSortComparator(leftArray, comparator);
+      rightArray = mergeSortComparator(rightArray, comparator);
+      mergeComparator(leftArray, rightArray, array, comparator);
+      }
+
+      return array;
+   }
+
+   private static <E> void mergeComparator(E[] leftArray, E[] rightArray, E[] array, Comparator<E> comparator) {
+   int leftIndex = 0;
+   int rightIndex = 0;
+   int arrayIndex = 0;
+
+   while (leftIndex < leftArray.length && rightIndex < rightArray.length) {
+      if (comparator.compare(leftArray[leftIndex], rightArray[rightIndex]) < 0) {
+         array[arrayIndex] = leftArray[leftIndex];
+         leftIndex++;
+         } else {
+         array[arrayIndex] = rightArray[rightIndex];
+         rightIndex++;
+         }
+      arrayIndex++;
+      }
+
+   while (leftIndex < leftArray.length) {
+      array[arrayIndex] = leftArray[leftIndex];
+      arrayIndex++;
+      leftIndex++;
+      }
+
+   while (rightIndex < rightArray.length) {
+      array[arrayIndex] = rightArray[rightIndex];
+      arrayIndex++;
+      rightIndex++;
+      }
+   }
+*/   
+
+   ///////////////////////////////////////////
+   // Mergesort from index to index using comparator (not working)
+   ///////////////////////////////////////////
+
+/*
+   @SuppressWarnings("unchecked")
+   private static <E> E [] mergeSortComparator(E[] array, int fromIndex, int toIndex, Comparator<E> comparator) {
+      int length = toIndex - fromIndex;
+      int mid = length / 2;
+      E [] leftArray = (E[]) new Object[mid];
+      E [] rightArray = (E[]) new Object[mid];
+      if (length == 1) {
+         return array;
+      } else {
+         for (int i = fromIndex; i < mid; i++) {
+            int j = 0;
+            leftArray[j++] = array[i];
+         }
+         for (int i = mid; i < toIndex; i++) {
+            int j = 0;
+            rightArray[j++] = array[i];
+         }
+
+      leftArray = mergeSortComparator(leftArray, comparator);
+      rightArray = mergeSortComparator(rightArray, comparator);
+      mergeComparator(leftArray, rightArray, array, comparator);
+      }
+
+      return array;
+   }
+*/
 
 }

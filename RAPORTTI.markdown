@@ -61,7 +61,9 @@ Toteutus noudattaa aikakompleksisuutta.
 Linkitetyn listan muistikompleksisuus voi olla pienempi, jos taulukossa on paljon tyhjiä paikkoja. Myöskin linkitettyyn listaan alkioiden aikakompleksisuus on aina O(1), sillä reallokointia ei tarvita.
 Taulukolla ei paljoa etuja ole jonorakennetta toteuttaessa, mutta esimerkiksi taulukon koon pysyminen vakiona (jos tiedetään tarkalleen alkioille tarvittavan tilan määrä), voi olla hyvä asia.
 ## 06-TASK
-
+Quicksort oli helppo tehdä. Koitin tehdä mergesorttia mutta motivaation puutteen takia jätin sen kesken.
+![Excelkuva, vasemmalla puolella hidas lajittelu, oikealla nopea](image-2.png)
+Kuvasta näkee, että quicksort on järjettömän paljon nopeampi kuin insertion sort. Quicksort ei hidastu per elementti, kun elementtien määrä kasvaa. En nyt voi verrata quicksorttia muihin nopeisiin lajittelumenetelmiin niiden puuttumisen takia.
 ## 07-TASK
 
 ## 08-TASK
