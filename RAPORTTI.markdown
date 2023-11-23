@@ -65,7 +65,13 @@ Quicksort oli helppo tehdä. Koitin tehdä mergesorttia mutta motivaation puutte
 ![Excelkuva, vasemmalla puolella hidas lajittelu, oikealla nopea](image-2.png)
 Kuvasta näkee, että quicksort on järjettömän paljon nopeampi kuin insertion sort. Quicksort ei hidastu per elementti, kun elementtien määrä kasvaa. En nyt voi verrata quicksorttia muihin nopeisiin lajittelumenetelmiin niiden puuttumisen takia.
 ## 07-TASK
-
+Toteutin getIndex ja indexOf metodit käyttäen solmujen lapsien määrää haussa eli metodilla D. Toteutin toArray metodin stackia käyttäen, eli metodilla B, muut rekursiolla, eli metodilla A. Tämän tein vain kokeilumielessä, eikä stackin käyttäminen vaikuttanut toteutukseen tai sen nopeuteen.
+Valinnaisista tehtävistä koitin toteuttaa puusta noden poistamista, mutta toteutus ei oman testauksen mukaan näyttänyt toimivan eikä mielenterveys riitä sen korjaamiseen. En toteuttanut visitoria.
+![Excelkuva, vasemmalla simpleContainer, oikealla BST](image-3.png)
+Taulukoista huomaa hyvin BSTn nopeuden verrattuna simpleContaineriin, varsinkin ku indeksihaut pohjautuvat tuohon nopeaan metodiin. Lisääminen vaikuttaisi olevan aikalailla O(N) luokkaa, sekä indeksihaku O(N*log(N)) luokkaa. Normaali hakuaikakaan ei hidastu tajuttomasti, kun aineiston määrä kasvaa.
+BST:n syvyys, jos se on täydellisesti tasapainotettu, on noin log_2(n), eli kahdella miljoonalla nodella syvyys olisi noin 21. Testasin jokaisella aineistolla syvyyttä, käyttäen hyväksi BSTPerformanceTests testejä, ja syvyydet olivat seuraavat:
+13, 22, 29, 30, 40, 38, 51, 53. Syvyydet eivät ole optimaaliset, mutta tämä johtuu siitä että puu ei ole tasapainotettu. Tulokset ovat ovat todella hyviä, sillä kahdella miljoonalla nodella syvyys on siltikin vain 53. 
+TIRA codersissa toiminta on hiukan hitaampaa sovelluksen luomien hidastumisten vuoksi, mutta omalla koneella myös kahdella miljoonalla coderilla sovellus toimi, jokseenkin hitaasti. Sadalla tuhannella coderilla sovellus toimi sulavasti.
 ## 08-TASK
 
 ## 09-TASK
