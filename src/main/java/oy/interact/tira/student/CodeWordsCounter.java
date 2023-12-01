@@ -8,6 +8,7 @@ import java.nio.file.PathMatcher;
 import java.nio.file.Paths;
 import java.nio.file.SimpleFileVisitor;
 import java.nio.file.attribute.BasicFileAttributes;
+import java.util.Comparator;
 
 import oy.interact.tira.factories.HashTableFactory;
 import oy.interact.tira.util.Pair;
@@ -68,52 +69,49 @@ public class CodeWordsCounter {
 
 	private void countWordsFrom(File file) throws OutOfMemoryError, IOException {
 		String content = new String(Files.readAllBytes(Paths.get(file.getAbsolutePath())));
-		// Characters of a single word as Unicode codepoints.
 		int [] wordChars = new int[MAX_WORD_SIZE];
-		// Index used to fill wordChars array from the string in the file.
 		int codeWordIndex = 0;
 		System.out.println("File: " + file.getAbsolutePath());
 		long start = System.currentTimeMillis();
 		for (int index = 0; index < content.length(); index++) {
-			// STUDENTS: TODO: Implement this pseudocode to fill the hash table with unique word counts
-			// from the source code file.
-			// 1. Get a code point at the index from content.
-			// 2. If the code point is a letter character...
-			//       2.1 Add it to the wordChars array to codeWordIndex and add one to codeWordIndex.
-			//    ...else we have a word break char and wordChars contains now a word:
-			//       2.2 If the array has 2 or more chars (do not count one char "words")...
-			//          2.2.1 Convert the array of chars to String object.
-			//          2.2.2 Convert the string to lowercase (we treat "char" and "CHAR" as one "char" word) 
-			//          2.2.3 Get the word count from the hashtable (word is key, returned value from hashtable is the count)
-			//          2.2.4 If we got null, hashtable does not have this word, then...
-			//             2.2.4.1 add the word with count 1 to the hashtable; word appears once so far.
-			//          2.2.5 ...else, word already appears in hash table, so
-			//             2.2.5.1 Add the word to hashtable with count increased by one
-			//                     (Remember that adding the same key to hashtable must update the value already in hashtable).
-			//       2.3 Reset the codeWordIndex to zero so next new word will start filling the wordChars array from the start.
-
+			int codePoint = content.codePointAt(index);
+	
+			if (Character.isLetter(codePoint)) {
+				wordChars[codeWordIndex] = codePoint;
+				codeWordIndex++;
+			} else {
+				if (codeWordIndex >= 2) {
+					String word = new String(wordChars, 0, codeWordIndex).toLowerCase();
+	
+					Integer count = codeWords.get(word);
+					if (count == null) {
+						codeWords.add(word, 1);
+					} else {
+						codeWords.add(word, count + 1);
+					}
+				}
+				codeWordIndex = 0;
+			}
 		}
-		// ^^ STUDENTS: your implementation after the commens.
 		cumulativeTimeInMilliseconds += System.currentTimeMillis() - start;
+	}
+
+	private class ValueComparator<K extends Comparable<K>, V extends Comparable<V>> implements Comparator<Pair<K, V>> {
+		@Override
+		public int compare(Pair<K, V> pair1, Pair<K, V> pair2) {
+			return pair1.getValue().compareTo(pair2.getValue());
+		}
 	}
 
 	@SuppressWarnings("unchecked")
 	public Pair<String, Integer>[] topCodeWords(int topCount) throws Exception {
-		if (null == codeWords) {
-			Pair<String, Integer>[] result = new Pair[1];	
-			result[0] = new Pair<>("Hashtable not implemented yet", 0);
-			return result;
-		}
-		// STUDENTS: TODO: Implement this pseudocode to get the top words sorted by frequency of use from hash table.
-		// 1. Get, from the hash table, pairs of all words and word counts from hash table to an array.
-		// 2. Use your fast sort algorithm to sort the array of pairs by word count, descending (!) order,
-		//    so that the word that is most frequent, is the first in the array.
-		// 3. Allocate a new array (let's call it result array) of size topCount,
-		//        or _smaller_ if the array has _less_ than topCount items.
-		//        Let's say the resulting new array size is n.
-		// 4. Put the first n items from the array of all pairs to this result array of size n.
-		// 5. Return the results array to caller.
-		return null; // TODO: return the array of codeword/count pairs.
+		Pair<String, Integer>[] pairs = codeWords.toArray();
+		ValueComparator<String, Integer> comparator = new ValueComparator<>();
+		Algorithms.fastSort(pairs, comparator);
+		Algorithms.reverse(pairs);
+		int resultSize = Math.min(topCount, pairs.length);
+		Pair<String, Integer>[] result = new Pair[resultSize];
+		System.arraycopy(pairs, 0, result, 0, resultSize);
+		return result;
 	}
-
 }

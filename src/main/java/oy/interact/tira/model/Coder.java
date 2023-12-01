@@ -210,7 +210,12 @@ public class Coder implements Comparable<Coder> {
 	 */
 	@Override
 	public int hashCode() {
-		return 0;
+		int prime = 31;
+		int hashCode = 1;
+		for (int i = 0; i < id.length(); i++) {
+			hashCode = prime * hashCode + getId().charAt(i);
+		}
+
+		return hashCode * 0x9e3779b9; //Knuth's constant, helps with distribution
 	}
-	
 }

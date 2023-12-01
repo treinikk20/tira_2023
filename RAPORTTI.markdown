@@ -73,5 +73,8 @@ BST:n syvyys, jos se on täydellisesti tasapainotettu, on noin log_2(n), eli kah
 13, 22, 29, 30, 40, 38, 51, 53. Syvyydet eivät ole optimaaliset, mutta tämä johtuu siitä että puu ei ole tasapainotettu. Tulokset ovat ovat todella hyviä, sillä kahdella miljoonalla nodella syvyys on siltikin vain 53. 
 TIRA codersissa toiminta on hiukan hitaampaa sovelluksen luomien hidastumisten vuoksi, mutta omalla koneella myös kahdella miljoonalla coderilla sovellus toimi, jokseenkin hitaasti. Sadalla tuhannella coderilla sovellus toimi sulavasti.
 ## 08-TASK
-
+Hashtablen toteuttaminen oli paljon helpompi kuin BSTn, eikä mikään oikein toteuttanut ongelmia.
+![Excelkuva](image-4.png)
+Taulukoista huomaa kuinka hashtable parantaa nopeutta BST verrattuna jokaisessa luokassa, paitsi kun hashtable viedään arrayksi ja lajitellaan. Hashtablen optimaaliset lisäämis- ja hakuajat ovat luokkaa O(1), ja toteutus näyttäisi seuraavan näitä aikakompleksisuuksia add time/item ja search time/item sarakkeiden mukaan. ToArray-metodi joutuu käymään läpi koko hashtablen, jolloin se myös käy tyhjiä indeksejä läpi. Tästä johtuu hitaampi toiminta verrattuna BSTn toArray metodiin.
+Vaikka simple keyed containeriin on nopeampi lisätä elementtejä, huomaa hidastumisen hakuajassa. Koitin testata omalla koneellani lisätä miljoonaa koodaria, ja kahden tunninkaan jälkeen ei tämä ollut onnistunut.
 ## 09-TASK
