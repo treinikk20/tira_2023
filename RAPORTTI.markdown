@@ -78,3 +78,12 @@ Hashtablen toteuttaminen oli paljon helpompi kuin BSTn, eikä mikään oikein to
 Taulukoista huomaa kuinka hashtable parantaa nopeutta BST verrattuna jokaisessa luokassa, paitsi kun hashtable viedään arrayksi ja lajitellaan. Hashtablen optimaaliset lisäämis- ja hakuajat ovat luokkaa O(1), ja toteutus näyttäisi seuraavan näitä aikakompleksisuuksia add time/item ja search time/item sarakkeiden mukaan. ToArray-metodi joutuu käymään läpi koko hashtablen, jolloin se myös käy tyhjiä indeksejä läpi. Tästä johtuu hitaampi toiminta verrattuna BSTn toArray metodiin.
 Vaikka simple keyed containeriin on nopeampi lisätä elementtejä, huomaa hidastumisen hakuajassa. Koitin testata omalla koneellani lisätä miljoonaa koodaria, ja kahden tunninkaan jälkeen ei tämä ollut onnistunut.
 ## 09-TASK
+Graafin toteutus tietorakenteena tuntui helpolta aluksi, mutta paljon bugifixausta piti tehdä. Opin kuitenkin miten graafi toimii.
+![Excelkuva](image-5.png)
+En jaksanut odottaa viimeistä aineistoa, sillä tunninkaan jälkeen ei se ollut valmis.
+Graafin toteutus on oikeellinen, jonka testitkin varmistavat, mutta aikakompleksisuudet eivät todellakaan ole oikein BFS:ssa tai DFS:ssa. Tämä siksi koska niiden toteutus ei todennäköisesti ole oikeellinen. Aikakompleksisuuden pitäisi olla O(E+V), mutta se on toteutuksesssa paljon suurempi. Myöskin Dijkstran hakualgoritmi on todella hidas suurilla aineistoilla, ja sen hitaus vain kasvaa eksponentiaalisesti, joten toteutus ei todennäköisesti ole oikeellinen. Sen aikakompleksisuus pitäisi olla O((V+E)*log(V)), mutta todellisuudessa se on paljon suurempi. Ehkä hitaus johtuu vain suuresta yhdistyneisyydestä.
+Verkot ovat siis todennäköisesti tiheitä, sillä edgejä oli todella paljon.
+Matriisi olisi todennäköisesti ollut parempi.
+Hashaaminen on aina nopeampaa, kun dataa lisätään muutenkin satunnaisesti.
+En koittanut eri Mapin toteutuksia. Käytin HashMappia.
+En käyttänyt erilaisia aputietorakenteita. Käytin ArrayListia.

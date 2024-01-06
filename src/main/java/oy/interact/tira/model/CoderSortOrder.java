@@ -54,7 +54,7 @@ public enum CoderSortOrder {
 		};
 	}
 
-	// TODO: Students: Implement Comparators for comparing Coder full names
+	// Students: Implement Comparators for comparing Coder full names
 	// and coder names as required, below, following the instructions in the task!
 
 	public Comparator<Coder> getComparator() {
